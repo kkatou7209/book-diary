@@ -1,4 +1,5 @@
 import {
+  Book,
   Footer
 } from '../index';
 
@@ -28,9 +29,10 @@ export default function BSContents() {
             padding: 3,
           }}
         >
-          
+          <Book />
         </Paper>
       </Box>
+      <Footer />
     </>
   );
 }
