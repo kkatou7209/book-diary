@@ -1,4 +1,9 @@
 import {
+  useEffect,
+  useState,
+} from 'react';
+
+import {
   Book,
   Footer
 } from '../index';
@@ -8,8 +13,15 @@ import {
   Paper
 } from '@mui/material';
 
+import {
+  books as bks,
+} from './dataset';
+
+
 
 export default function BSContents() {
+  const [books, setBooks] = useState(bks);
+
   return (
     <>
       <Box
@@ -29,7 +41,17 @@ export default function BSContents() {
             padding: 3,
           }}
         >
-          <Book />
+          <Box
+             sx={{
+               width: '100%',
+               height: '100%',
+               overflowY: 'scroll',
+             }}
+          >
+            {books.map((book, key) => {
+              return <Book book={book} key={key}/>
+            })}
+          </Box>
         </Paper>
       </Box>
       <Footer />

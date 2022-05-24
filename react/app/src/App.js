@@ -32,7 +32,8 @@ export default function App() {
     palette: {
       primary: {
         main: '#DEA057',
-        bg: '#E0D8B0'
+        bg: '#E0D8B0',
+        content: '#F9EBC8'
       },
     }
   })
