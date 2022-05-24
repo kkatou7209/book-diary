@@ -16,12 +16,17 @@ import {
 
 import {
   AddBookShelf,
+  BookDetail,
   BSContents,
   Header,
   Home,
   SignIn,
   SignUp,
 } from './pages/index';
+
+import {
+  books,
+} from './pages/components/dataset';
 
 export default function App() {
   const [login, setLogin] = useState(false);
@@ -53,6 +58,14 @@ export default function App() {
             <Route path='/sign-up' element={<SignUp />}/>
             <Route path='/add-book-shelf' element={<AddBookShelf />} />
             <Route path='/bs-contents' element={<BSContents />} />
+            {books.map((book) => {
+              return (
+                <Route
+                  path={`/book-detail-${book.id}`}
+                  element={<BookDetail key={book.title} book={book}/>}
+                />
+              )
+            })}
           </Routes>
         </Router>
       </Container>
