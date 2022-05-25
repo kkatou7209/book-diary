@@ -5,6 +5,7 @@ export { default as SignUp } from './SignUp';
 export { default as AddBookShelf } from './AddBookShelf';
 export { default as BSContents } from './BSContents';
 export { default as BookDetail } from './BookDetail';
+export { default as EditBookDetail } from './EditBookDetail';
 
 // components
 export { default as Header } from './components/Header';

@@ -18,6 +18,7 @@ import {
   AddBookShelf,
   BookDetail,
   BSContents,
+  EditBookDetail,
   Header,
   Home,
   SignIn,
@@ -62,7 +63,20 @@ export default function App() {
                     <Route
                       key={`route to BookDetail of ${book.title}`}
                       path={`/book-detail/${bookshelf.id}/${book.id}`}
-                      element={<BookDetail key={book.title} book={book}/>}
+                      element={<BookDetail key={book.title} book={book} path={`/edit-book-detail/${bookshelf.id}/${book.id}`}/>}
+                    />
+                  )
+                })
+              )
+            })}
+            {bookshelves.map((bookshelf) => {
+              return (
+                bookshelf.books.map((book) => {
+                  return (
+                    <Route
+                      key={`route to EditBookDetail of ${book.title}`}
+                      path={`/edit-book-detail/${bookshelf.id}/${book.id}`}
+                      element={<EditBookDetail key={book.title} book={book} />}
                     />
                   )
                 })
