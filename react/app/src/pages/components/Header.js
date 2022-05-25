@@ -20,7 +20,7 @@ export default function Header() {
           position: 'static'
         }}
       >
-        <Typography variant="h4">
+        <Typography variant="h4" sx={{fontWeight: 'bold'}}>
           <Link 
             href='/' 
             color='inherit'

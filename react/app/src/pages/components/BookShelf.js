@@ -4,6 +4,7 @@ import {
   CardContent,
   Grid,
   IconButton,
+  Link,
   Typography,
 } from "@mui/material";
 
@@ -15,39 +16,30 @@ import {
 export default function BookShelf() {
   
   return (
-    <Card
-      sx={{
-        width: 300,
-        height: 300,
-      }}
-    >
-      <CardContent
+    <Link href='/bs-contents' underline='none'>
+      <Card
         sx={{
-          height: 268,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between'
+          width: 300,
+          height: 300,
         }}
       >
-        <Box sx={{display: 'flex', alignItems: 'center', height: 30}}>
-          <LocalOffer sx={{paddingRight: 2}}/>
-          <Typography fontSize={20}>
-            Philosophy
-          </Typography>
-        </Box>
-        <Box
+        <CardContent
           sx={{
+            height: 268,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'flex-end'
+            justifyContent: 'space-between'
           }}
         >
-          <IconButton href='/bs-contents'>
-            <ArrowForward />
-          </IconButton>
-        </Box>
-      </CardContent>
-    </Card>
+          <Box sx={{display: 'flex', alignItems: 'center', height: 30}}>
+            <LocalOffer sx={{paddingRight: 2}}/>
+            <Typography fontSize={20}>
+              Philosophy
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+    </Link>
 
   );
 }
