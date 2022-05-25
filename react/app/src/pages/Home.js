@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 
 
-export default function Home() {
+export default function Home({bookshelves}) {
   return (
     <>
       <Box 
@@ -26,9 +26,13 @@ export default function Home() {
           sx={{
             justifyContent: 'start',
           }}>
-          <Grid item >
-            <BookShelf/>
-          </Grid>
+            {bookshelves.map((bookshelf) => {
+              return (
+                <Grid item key={bookshelf.category}>
+                  <BookShelf bookshelf={bookshelf} />
+                </Grid>
+              )
+            })}
         </Grid>
       </Box>
       <Footer />

@@ -25,13 +25,11 @@ import {
 } from './pages/index';
 
 import {
-  books,
+  bookshelves_data,
 } from './pages/components/dataset';
 
 export default function App() {
-  const [login, setLogin] = useState(false);
-
-  
+  const [bookshelves, setBookshelves] = useState(bookshelves_data);
 
   const theme = createTheme({
     palette: {
@@ -53,16 +51,29 @@ export default function App() {
         <Header />
         <Router>
           <Routes>
-            <Route path='/' element={<Home />}/>
+            <Route path='/' element={<Home bookshelves={bookshelves}/>}/>
             <Route path='/sign-in' element={<SignIn />}/>
             <Route path='/sign-up' element={<SignUp />}/>
             <Route path='/add-book-shelf' element={<AddBookShelf />} />
-            <Route path='/bs-contents' element={<BSContents />} />
-            {books.map((book) => {
+            {bookshelves.map((bookshelf) => {
+              return (
+                bookshelf.books.map((book) => {
+                  return (
+                    <Route
+                      key={`route to BookDetail of ${book.title}`}
+                      path={`/book-detail/${bookshelf.id}/${book.id}`}
+                      element={<BookDetail key={book.title} book={book}/>}
+                    />
+                  )
+                })
+              )
+            })}
+            {bookshelves.map((bookshelf) => {
               return (
                 <Route
-                  path={`/book-detail-${book.id}`}
-                  element={<BookDetail key={book.title} book={book}/>}
+                  key={`route to BSContent of ${bookshelf.category}`}
+                  path={`/bs-contents/${bookshelf.id}`}
+                  element={<BSContents key={bookshelf.category} books={bookshelf.books} path={`/book-detail/${bookshelf.id}`}/>}
                 />
               )
             })}
