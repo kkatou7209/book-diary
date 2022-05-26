@@ -26,7 +26,7 @@ export default function BSContents({books, path}) {
           className='bs-contents__paper'
           sx={{
             width: {md: 900, sm: 700, xs: 500},
-            height: {md: 630, xs: 650},
+            height: {md: 630, xs: 600},
             padding: 2,
           }}
         >
