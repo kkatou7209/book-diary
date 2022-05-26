@@ -5,6 +5,7 @@ import {
 import {
   Container, 
   createTheme,
+  CssBaseline,
   ThemeProvider,
 } from '@mui/material';
 
@@ -43,58 +44,61 @@ export default function App() {
   })
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container
-        maxWidth={false}
-        color='primary'
-        sx={{height: '100vh', bgcolor: 'primary.bg'}}
-      >
-        <Header />
-        <Router>
-          <Routes>
-            <Route path='/' element={<Home bookshelves={bookshelves}/>}/>
-            <Route path='/sign-in' element={<SignIn />}/>
-            <Route path='/sign-up' element={<SignUp />}/>
-            <Route path='/add-book-shelf' element={<AddBookShelf />} />
-            {bookshelves.map((bookshelf) => {
-              return (
-                bookshelf.books.map((book) => {
-                  return (
-                    <Route
-                      key={`route to BookDetail of ${book.title}`}
-                      path={`/book-detail/${bookshelf.id}/${book.id}`}
-                      element={<BookDetail key={book.title} book={book} path={`/edit-book-detail/${bookshelf.id}/${book.id}`}/>}
-                    />
-                  )
-                })
-              )
-            })}
-            {bookshelves.map((bookshelf) => {
-              return (
-                bookshelf.books.map((book) => {
-                  return (
-                    <Route
-                      key={`route to EditBookDetail of ${book.title}`}
-                      path={`/edit-book-detail/${bookshelf.id}/${book.id}`}
-                      element={<EditBookDetail key={book.title} book={book} />}
-                    />
-                  )
-                })
-              )
-            })}
-            {bookshelves.map((bookshelf) => {
-              return (
-                <Route
-                  key={`route to BSContent of ${bookshelf.category}`}
-                  path={`/bs-contents/${bookshelf.id}`}
-                  element={<BSContents key={bookshelf.category} books={bookshelf.books} path={`/book-detail/${bookshelf.id}`}/>}
-                />
-              )
-            })}
-          </Routes>
-        </Router>
-      </Container>
-    </ThemeProvider>
+    <>
+      <CssBaseline />
+      <ThemeProvider theme={theme}>
+        <Container
+          maxWidth={false}
+          color='primary'
+          sx={{height: '100vh', bgcolor: 'primary.bg'}}
+        >
+          <Header />
+          <Router>
+            <Routes>
+              <Route path='/' element={<Home bookshelves={bookshelves}/>}/>
+              <Route path='/sign-in' element={<SignIn />}/>
+              <Route path='/sign-up' element={<SignUp />}/>
+              <Route path='/add-book-shelf' element={<AddBookShelf />} />
+              {bookshelves.map((bookshelf) => {
+                return (
+                  bookshelf.books.map((book) => {
+                    return (
+                      <Route
+                        key={`route to BookDetail of ${book.title}`}
+                        path={`/book-detail/${bookshelf.id}/${book.id}`}
+                        element={<BookDetail key={book.title} book={book} path={`/edit-book-detail/${bookshelf.id}/${book.id}`}/>}
+                      />
+                    )
+                  })
+                )
+              })}
+              {bookshelves.map((bookshelf) => {
+                return (
+                  bookshelf.books.map((book) => {
+                    return (
+                      <Route
+                        key={`route to EditBookDetail of ${book.title}`}
+                        path={`/edit-book-detail/${bookshelf.id}/${book.id}`}
+                        element={<EditBookDetail key={book.title} book={book} path={`/book-detail/${bookshelf.id}/${book.id}`}/>}
+                      />
+                    )
+                  })
+                )
+              })}
+              {bookshelves.map((bookshelf) => {
+                return (
+                  <Route
+                    key={`route to BSContent of ${bookshelf.category}`}
+                    path={`/bs-contents/${bookshelf.id}`}
+                    element={<BSContents key={bookshelf.category} books={bookshelf.books} path={`/book-detail/${bookshelf.id}`}/>}
+                  />
+                )
+              })}
+            </Routes>
+          </Router>
+        </Container>
+      </ThemeProvider>
+    </>
   );
 }
 

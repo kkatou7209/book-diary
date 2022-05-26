@@ -26,15 +26,23 @@ export default function BookShelf({bookshelf}) {
               height: 268,
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'space-between'
             }}
           >
-            <Box sx={{display: 'flex', alignItems: 'center', height: 30}}>
-              <LocalOffer sx={{paddingRight: 2}}/>
-              <Typography fontSize={20}>
-                {bookshelf.category}
-              </Typography>
-            </Box>
+            <Typography
+              fontSize={30}
+              sx={{
+                display: 'inline-flex',
+                textAlign: 'center',
+                alignItems: 'center',
+                marginBottom: 2
+              }}
+            >
+              <LocalOffer sx={{marginRight: 2}}/>
+              {bookshelf.category}
+            </Typography>
+            <Typography fontSize={20}>
+              Volume {bookshelf.books.length}
+            </Typography>
           </CardContent>
         </Card>
       </Link>
